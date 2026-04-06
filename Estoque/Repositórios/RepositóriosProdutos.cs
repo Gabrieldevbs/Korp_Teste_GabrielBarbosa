@@ -60,6 +60,19 @@ namespace Estoque.Repositórios
             return Produtos;
         }
 
+        public async Task<ProdutosDTO> GetProdutoPorCodigo(string Codigo)
+        {
+            var Produtos = await _Contexto.Produtos.Select(p => new ProdutosDTO
+            {
+                ProdutoId = p.produtoid,
+                Descricao = p.descricao,
+                Codigo = p.codigo,
+                Saldo = p.saldo
+            }).Where(p => p.Codigo == Codigo).FirstOrDefaultAsync();
+
+            return Produtos;
+        }
+
         public async Task AtualizarProduto(ProdutosDTO Produto)
         {
             var ProdutoParaAtualizar = await _Contexto.Produtos.Where(p => p.produtoid == Produto.ProdutoId).FirstOrDefaultAsync();

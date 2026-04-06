@@ -8,6 +8,7 @@ namespace Estoque.Interfaces
         Task CriarProduto(Produtos Produto);
         Task<List<ProdutosDTO>> GetProduto();
         Task<ProdutosDTO> GetProdutoPorDescrição(string Descricao);
+        Task<ProdutosDTO> GetProdutoPorCodigo(string Codigo);
         Task<ProdutosDTO> GetProdutoPorId(int ProdutoId);
         Task AtualizarProduto(ProdutosDTO Produto);
         Task BaixarEstoque(int ProdutoId, int? QuantidadeParaBaixar);

@@ -39,7 +39,7 @@ namespace Estoque.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> AtualizarProduto([FromBody]ProdutosDTO Produto)
+        public async Task<IActionResult> AtualizarProduto(ProdutosDTO Produto)
         {
             await _ProdutosServiços.AtualizarProduto(Produto);
             return Ok();

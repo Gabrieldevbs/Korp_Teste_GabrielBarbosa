@@ -16,10 +16,18 @@ namespace Estoque.Serviços
 
         public async Task CriarProduto(ProdutoModelView Produto)
         {
-            var ProdutoExiste = await _ProdutosRepositório.GetProdutoPorDescrição(Produto.Descricao);
-            if (ProdutoExiste != null)
+            var DescricaoExiste = await _ProdutosRepositório.GetProdutoPorDescrição(Produto.Descricao);
+
+            if (DescricaoExiste != null)
             {
-                throw new ArgumentException("Esse produto já existe.");
+                throw new ArgumentException("Essa Descrição já existe.");
+            }
+
+            var CodigoExiste = await _ProdutosRepositório.GetProdutoPorCodigo(Produto.Codigo);
+
+            if (CodigoExiste != null)
+            {
+                throw new ArgumentException("Esse código já existe.");
             }
 
             var NovoProduto = new Produtos(Produto.Codigo, Produto.Descricao, Produto.Saldo);
@@ -61,9 +69,29 @@ namespace Estoque.Serviços
                 throw new ArgumentException("Esse produto Não existe!");
             }
 
-            if (Produto.Codigo == ProdutoExiste.Codigo && Produto.Descricao == Produto.Descricao && Produto.Saldo == ProdutoExiste.Saldo)
+            if (Produto.Codigo == ProdutoExiste.Codigo && Produto.Descricao == ProdutoExiste.Descricao && Produto.Saldo == ProdutoExiste.Saldo)
             {
                 throw new ArgumentException("Nenhuma alteração foi feita no produto.");
+            }
+
+            if (Produto.Descricao != ProdutoExiste.Descricao)
+            {
+                var DescricaoExiste = await _ProdutosRepositório.GetProdutoPorDescrição(Produto.Descricao);
+
+                if (DescricaoExiste != null)
+                {
+                    throw new ArgumentException("Essa Descrição já existe.");
+                }
+            }
+
+            if(Produto.Codigo != ProdutoExiste.Codigo)
+            {
+                var CodigoExiste = await _ProdutosRepositório.GetProdutoPorCodigo(Produto.Codigo);
+
+                if (CodigoExiste != null)
+                {
+                    throw new ArgumentException("Esse código já existe.");
+                }
             }
 
             var ProdutoAtualizar = new ProdutosDTO
