@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "..\\Financeiro\\Faturamento.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Estoque.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
