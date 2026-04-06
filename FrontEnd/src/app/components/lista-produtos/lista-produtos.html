@@ -1,0 +1,19 @@
+<main>
+    <h2>Lista de Produtos</h2>
+    <table class="tabela-produtos">
+        <thead class="cabecalho-tabela">
+            <th>Id</th>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Saldo</th>
+        </thead>
+        <tbody class="corpo-tabela">
+            <tr *ngFor="let produto of produtos">
+                <td>{{ produto.produtoId }}</td>
+                <td>{{ produto.codigo }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.saldo }}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>

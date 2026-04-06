@@ -1,0 +1,24 @@
+<main>
+    <h2>Detalhes da Nota com Id:  {{ id }}</h2>
+    <table class="tabela-produtosnf">
+        <thead class="cabecalho-tabela-edicao">
+            <th>Id</th>
+            <th>Produto Id</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+        </thead>
+        <tbody class="corpo-tabela-edicao">
+            <tr *ngFor="let produto of produtosvinculados">
+                <td>{{ produto.itemnotafiscalid }}</td>
+                <td>{{ produto.produtoid }}</td>
+                <td>{{ produto.quantidade }}</td>
+                <td>
+                    <div class="acoes">
+                        <button (click)='DeletarProdutoEmNota(produto.produtoid)'class="btn-excluir">Excluir</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-lista-produtos></app-lista-produtos>
+</main>

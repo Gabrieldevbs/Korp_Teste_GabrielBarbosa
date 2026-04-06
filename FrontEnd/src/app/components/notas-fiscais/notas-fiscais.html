@@ -1,0 +1,31 @@
+<main>
+    <h2>Notas Fiscais</h2>
+    <table class="tabela-notas">
+        <thead class="cabecalho-tabela">
+            <th>Id</th>
+            <th>Número Sequencial</th>
+            <th>Status</th>
+            <th>Data Criação</th>
+            <th><a><button (click)="CriarNota()" class="btn-adicionar">Criar Nota Fiscal</button></a></th>
+        </thead>
+        <tbody class="corpo-tabela">
+            <tr *ngFor="let nota of notas">
+                    <td>{{ nota.notaFiscalId }}</td>
+                    <td>{{ nota.numeracaoSequencial }}</td>
+                    <td *ngIf="nota.status == 1; else notafechada"> Aberta </td>
+                    <ng-template #notafechada>
+                        <td>Fechada</td>
+                    </ng-template>
+                    <td>{{ nota.dataCriacao }}</td>
+                <td>
+                    <div class="acoes">
+                        <a [routerLink]="['/notasfiscais/adicionar', nota.notaFiscalId]"><button class="btn-adicionarproduto">Adicionar</button></a>
+                        <a [routerLink]="['/notasfiscais/detalhes', nota.notaFiscalId]"><button class="btn-detalhes">Detalhes</button></a>
+                        <a><button (click)="FecharNota(nota.notaFiscalId)" class="btn-fechar">Fechar</button></a>
+                        <button (click)="DeletarNotas(nota.notaFiscalId)" class="btn-excluir">Excluir</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

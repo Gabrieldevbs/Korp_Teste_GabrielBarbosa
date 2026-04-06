@@ -1,0 +1,16 @@
+<main>
+    <div class="container" *ngIf="Produto">
+      <h2>Criar Produto</h2>
+
+      <label>Código</label>
+      <input type="text" [(ngModel)]="Produto.codigo">
+
+      <label>Descrição</label>
+      <input type="text" [(ngModel)]="Produto.descricao">
+
+      <label>Saldo</label>
+      <input type="number" [(ngModel)]="Produto.saldo">
+
+      <button (click)="criar()">Salvar</button>
+    </div>
+</main>

@@ -1,0 +1,107 @@
+[
+  {
+    "ContainingType": "Faturamento.API.Controllers.NotasFiscaisController",
+    "Method": "CriarNotaFiscal",
+    "RelativePath": "API/V1/NotasFiscais",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Faturamento.API.Controllers.NotasFiscaisController",
+    "Method": "GetNotasFiscais",
+    "RelativePath": "API/V1/NotasFiscais",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Faturamento.API.Controllers.NotasFiscaisController",
+    "Method": "FecharNotaFiscal",
+    "RelativePath": "API/V1/NotasFiscais",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "NotaFiscalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Faturamento.API.Controllers.NotasFiscaisController",
+    "Method": "DeletarNotaFiscal",
+    "RelativePath": "API/V1/NotasFiscais",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "NotaFiscalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Faturamento.API.Controllers.ProdutoNotaFiscalController",
+    "Method": "AdicionarProduto",
+    "RelativePath": "API/V1/ProdutoNotaFiscal",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProdutoNotaFiscal",
+        "Type": "Faturamento.API.ModelViews.ProdutoNotaFiscalModelView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Faturamento.API.Controllers.ProdutoNotaFiscalController",
+    "Method": "GetProdutosNotaFiscalAsync",
+    "RelativePath": "API/V1/ProdutoNotaFiscal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "NotaFiscalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Faturamento.API.Controllers.ProdutoNotaFiscalController",
+    "Method": "DeletarProduto",
+    "RelativePath": "API/V1/ProdutoNotaFiscal",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "NotaFiscalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProdutoId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

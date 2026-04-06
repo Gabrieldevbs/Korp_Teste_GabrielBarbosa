@@ -1,0 +1,26 @@
+<main>
+    <h2>Produtos</h2>
+    <table class="tabela-produtos">
+        <thead class="cabecalho-tabela">
+            <th>Id</th>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Saldo</th>
+            <th><a [routerLink]="['/produtos/criar']"><button class="btn-adicionar">Adicionar</button></a></th>
+        </thead>
+        <tbody class="corpo-tabela">
+            <tr *ngFor="let produto of produtos">
+                <td>{{ produto.produtoId }}</td>
+                <td>{{ produto.codigo }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.saldo }}</td>
+                <td>
+                    <div class="acoes">
+                        <a [routerLink]="['/produtos', produto.produtoId]"><button class="btn-editar">Alterar</button></a>
+                        <button (click)="DeletarProdutos(produto.produtoId)" class="btn-excluir">Excluir</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

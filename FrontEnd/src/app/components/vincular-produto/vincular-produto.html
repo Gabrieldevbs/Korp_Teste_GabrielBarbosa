@@ -1,0 +1,15 @@
+<main>
+    <div class="container" *ngIf="Produto">
+      <h2>Criar Produto</h2>
+
+      <label>Produto Id</label>
+      <input type="number" [(ngModel)]="Produto.produtoid">
+
+      <label>Quantidade</label>
+      <input type="number" [(ngModel)]="Produto.quantidade">
+
+      <button (click)="criar()">Salvar</button>
+    </div>
+
+    <app-lista-produtos></app-lista-produtos>
+</main>
