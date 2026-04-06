@@ -24,7 +24,7 @@ namespace Faturamento.Application.Serviços
             this._PdfService = PdfService;
         }
 
-        public async Task<string> CriarNotaFiscal() 
+        public async Task CriarNotaFiscal() 
         {
             var UltimaNotaFiscal = await _NotaFiscalRepositório.GetUltimaNotaFiscal();
 
@@ -37,8 +37,6 @@ namespace Faturamento.Application.Serviços
                 );
 
                 await _NotaFiscalRepositório.CriarNotaFiscal(NotaFiscalParaCriarNovo);
-
-                return "A nota fiscal foi criada com sucesso";
             }
 
             var NotaFiscalParaCriar = new NotasFiscais(
@@ -49,7 +47,6 @@ namespace Faturamento.Application.Serviços
 
             await _NotaFiscalRepositório.CriarNotaFiscal(NotaFiscalParaCriar);
 
-            return "A nota fiscal foi criada com sucesso";
 
         }
 
@@ -110,7 +107,7 @@ namespace Faturamento.Application.Serviços
             return pdf;
         }
 
-        public async Task<string> DeletarNotaFiscal(int NotaFiscalId)
+        public async Task DeletarNotaFiscal(int NotaFiscalId)
         {
             var NotaFiscalParaDeletar = await _NotaFiscalRepositório.GetNotasFiscaisPorId(NotaFiscalId);
 
@@ -126,7 +123,6 @@ namespace Faturamento.Application.Serviços
 
             await _NotaFiscalRepositório.DeletarNotaFiscal(NotaFiscalId);
 
-            return "A nota fiscal foi deletada com sucesso!";
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Faturamento.Application.Serviços
             this._EstoqueClient = EstoqueClient;
         }
 
-        public async Task<string> AddProdutoNaNotaFiscal(ProdutoNotaFiscalModelView ProdutoNotaFiscal)
+        public async Task AddProdutoNaNotaFiscal(ProdutoNotaFiscalModelView ProdutoNotaFiscal)
         {
             var NotaFiscalExiste = await _NotaFiscalRepositório.GetNotasFiscaisPorId(ProdutoNotaFiscal.NotaFiscalId);
             
@@ -58,7 +58,6 @@ namespace Faturamento.Application.Serviços
 
             await _ProdutoNotaFiscalRepositório.AddProdutoNaNotaFiscal(ProdutoNotaFiscalAdicionado);
 
-            return "Produto adicionado com sucesso";
         }
 
         public async Task<List<ProdutosNotaFiscal>> GetProdutosNotaFiscalAsync(int NotaFiscalId)
@@ -81,7 +80,7 @@ namespace Faturamento.Application.Serviços
         }
 
 
-        public async Task<string> DeletarProdutoDaNotaFiscal(int NotaFiscalId, int ProdutoId)
+        public async Task DeletarProdutoDaNotaFiscal(int NotaFiscalId, int ProdutoId)
         {
             var NotaFiscalExiste = await _NotaFiscalRepositório.GetNotasFiscaisPorId(NotaFiscalId);
 
@@ -103,8 +102,6 @@ namespace Faturamento.Application.Serviços
             }
 
             await _ProdutoNotaFiscalRepositório.DeletarProdutoDaNotaFiscal(NotaFiscalId, ProdutoId);
-
-            return "Produto adicionado com sucesso";
         }
     }
 }

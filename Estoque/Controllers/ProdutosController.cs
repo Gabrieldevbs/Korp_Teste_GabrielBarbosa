@@ -17,10 +17,10 @@ namespace Estoque.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CriarProduto([FromForm] ProdutoModelView Produto)
+        public async Task<IActionResult> CriarProduto([FromBody] ProdutoModelView Produto)
         {
-            var ProdutoCriado = await _ProdutosServiços.CriarProduto(Produto);
-            return Ok(ProdutoCriado);
+            await _ProdutosServiços.CriarProduto(Produto);
+            return Created();
         }
 
         [HttpGet]
@@ -41,23 +41,23 @@ namespace Estoque.Controllers
         [HttpPut]
         public async Task<IActionResult> AtualizarProduto([FromForm]ProdutosDTO Produto)
         {
-            var ProdutoAtualizado = await _ProdutosServiços.AtualizarProduto(Produto);
-            return Ok(ProdutoAtualizado);
+            await _ProdutosServiços.AtualizarProduto(Produto);
+            return Ok();
         }
 
         [HttpPut]
         [Route("BaixarEstoque/{ProdutoId}")]
         public async Task<IActionResult> BaixarEstoque(int ProdutoId, int QuantidadeParaBaixar)
         {
-            var EstoqueBaixado = await _ProdutosServiços.BaixarEstoque(ProdutoId, QuantidadeParaBaixar);
-            return Ok(EstoqueBaixado);
+            await _ProdutosServiços.BaixarEstoque(ProdutoId, QuantidadeParaBaixar);
+            return Ok();
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeletarProduto(int ProdutoId)
         {
-            var ProdutoDeletado = await _ProdutosServiços.DeletarProduto(ProdutoId);
-            return Ok(ProdutoDeletado);
+            await _ProdutosServiços.DeletarProduto(ProdutoId);
+            return Ok();
         }
     }
 }

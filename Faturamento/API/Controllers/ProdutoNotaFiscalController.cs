@@ -19,7 +19,7 @@ namespace Faturamento.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AdicionarProduto([FromBody]ProdutoNotaFiscalModelView ProdutoNotaFiscal)
         {
-            var ProdutoNotaFiscalCriado = await _ProdutoNotaFiscalServiços.AddProdutoNaNotaFiscal(ProdutoNotaFiscal);
+            await _ProdutoNotaFiscalServiços.AddProdutoNaNotaFiscal(ProdutoNotaFiscal);
             return Created();
         }
 
@@ -33,7 +33,7 @@ namespace Faturamento.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeletarProduto(int NotaFiscalId, int ProdutoId)
         {
-            var ProdutoNotaFiscalDeletado = await _ProdutoNotaFiscalServiços.DeletarProdutoDaNotaFiscal(NotaFiscalId, ProdutoId);
+            await _ProdutoNotaFiscalServiços.DeletarProdutoDaNotaFiscal(NotaFiscalId, ProdutoId);
             return Ok();
         }
     }

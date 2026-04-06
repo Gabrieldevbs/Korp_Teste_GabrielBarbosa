@@ -14,7 +14,7 @@ namespace Estoque.Serviços
             this._ProdutosRepositório = ProdutosRepositório;
         }
 
-        public async Task<string> CriarProduto(ProdutoModelView Produto)
+        public async Task CriarProduto(ProdutoModelView Produto)
         {
             var ProdutoExiste = await _ProdutosRepositório.GetProdutoPorDescrição(Produto.Descricao);
             if (ProdutoExiste != null)
@@ -25,8 +25,6 @@ namespace Estoque.Serviços
             var NovoProduto = new Produtos(Produto.Codigo, Produto.Descricao, Produto.Saldo);
 
             await _ProdutosRepositório.CriarProduto(NovoProduto);
-
-            return "Produto " + Produto.Descricao + " criado com sucesso!";
 
         }
 
@@ -54,7 +52,7 @@ namespace Estoque.Serviços
             return Produto;
         }
 
-        public async Task<string> AtualizarProduto(ProdutosDTO Produto)
+        public async Task AtualizarProduto(ProdutosDTO Produto)
         {
             var ProdutoExiste = await _ProdutosRepositório.GetProdutoPorId(Produto.ProdutoId);
 
@@ -78,15 +76,9 @@ namespace Estoque.Serviços
 
             await _ProdutosRepositório.AtualizarProduto(ProdutoAtualizar);
 
-            if (Produto.Descricao == null)
-            {
-                return "O produto " + ProdutoExiste.Descricao + " foi atualizado com sucesso!";
-            }
-
-            return "O produto " + Produto.Descricao + " foi atualizado com sucesso!";
         }
 
-        public async Task<string> BaixarEstoque(int ProdutoId, int QuantidadeParaBaixar)
+        public async Task BaixarEstoque(int ProdutoId, int QuantidadeParaBaixar)
         {
             var ProdutoExiste = await _ProdutosRepositório.GetProdutoPorId(ProdutoId);
 
@@ -104,11 +96,9 @@ namespace Estoque.Serviços
 
             await _ProdutosRepositório.BaixarEstoque(ProdutoId, NovoSaldo);
 
-            return "O estoque do Produto " + ProdutoExiste.Descricao + " foi alterado de " + ProdutoExiste.Saldo + " para " + NovoSaldo;
-
         }
 
-        public async Task<string> DeletarProduto(int ProdutoId)
+        public async Task DeletarProduto(int ProdutoId)
         {
             var ProdutoExiste = await _ProdutosRepositório.GetProdutoPorId(ProdutoId);
 
@@ -118,8 +108,6 @@ namespace Estoque.Serviços
             }
 
             await _ProdutosRepositório.DeletarProduto(ProdutoId);
-
-            return "O produto " + ProdutoExiste.Descricao + " foi deletado com sucesso!";
         }
     }
 }

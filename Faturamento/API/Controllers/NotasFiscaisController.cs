@@ -17,7 +17,7 @@ namespace Faturamento.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CriarNotaFiscal()
         {
-            var NotaCriada = await _NotaFiscalServiços.CriarNotaFiscal();
+            await _NotaFiscalServiços.CriarNotaFiscal();
             return Ok();
         }
 
@@ -38,7 +38,7 @@ namespace Faturamento.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeletarNotaFiscal(int NotaFiscalId)
         {
-            var NotaDeletada = await _NotaFiscalServiços.DeletarNotaFiscal(NotaFiscalId);
+            await _NotaFiscalServiços.DeletarNotaFiscal(NotaFiscalId);
             return Ok();
         }
     }
