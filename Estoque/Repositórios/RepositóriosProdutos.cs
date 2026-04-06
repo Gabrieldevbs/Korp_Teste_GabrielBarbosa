@@ -2,6 +2,7 @@
 using Estoque.Interfaces;
 using Estoque.Models;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 
 namespace Estoque.Repositórios
@@ -87,11 +88,24 @@ namespace Estoque.Repositórios
             await _Contexto.SaveChangesAsync();
         }
 
-        public async Task DeletarProduto(int ProdutoId) 
+        public async Task DeletarProduto(int ProdutoId)
         {
-            var ProdutoParaDeletar = await _Contexto.Produtos.Where(p => p.produtoid == ProdutoId).FirstOrDefaultAsync();
-            _Contexto.Produtos.Remove(ProdutoParaDeletar);
-            await _Contexto.SaveChangesAsync();
+            try
+            {
+                var ProdutoParaDeletar = await _Contexto.Produtos.Where(p => p.produtoid == ProdutoId).FirstOrDefaultAsync();
+                _Contexto.Produtos.Remove(ProdutoParaDeletar);
+                await _Contexto.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException is PostgresException pgEx)
+                {
+                    if (pgEx.SqlState == "23503")
+                    {
+                        throw new ArgumentException("Não é possível excluir o produto, pois ele está vinculado a uma nota fiscal.");
+                    }
+                }
+            }
         }
     }
 }
